@@ -1,0 +1,1 @@
+("9.1" ta6le ("2d51d5da71d41834811d7cd2ba980a39edc95641" . "1f48e47b0278df3ba0a46c0984efe63866ca2ddf") #"/home/yoshkoz/poker-trainer-racket/poker_trainer/cards.rkt" #"/home/yoshkoz/poker-trainer-racket/poker_trainer/evaluator.rkt" (collects #"racket" #"list.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

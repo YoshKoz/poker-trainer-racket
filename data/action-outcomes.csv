@@ -1,0 +1,19 @@
+# Seed aggregate action outcomes for the built-in trainer drills.
+# Format: spot-key,action,trials,wins,losses,ev-bb
+# Replace or extend this file with aggregates parsed from real hand histories.
+spot-key,action,trials,wins,losses,ev-bb
+top-pair-top-kicker-against-a-calling-station,fold,900,0,900,-900.0
+top-pair-top-kicker-against-a-calling-station,call,1200,684,516,18.5
+top-pair-top-kicker-against-a-calling-station,raise,1800,1161,639,124.5
+dominated-offsuit-broadway-out-of-position,fold,1500,0,1500,0.0
+dominated-offsuit-broadway-out-of-position,call,1100,407,693,-96.0
+dominated-offsuit-broadway-out-of-position,raise,650,267,383,-54.0
+nut-flush-draw-getting-a-good-price,fold,900,0,900,-900.0
+nut-flush-draw-getting-a-good-price,call,1600,752,848,64.0
+nut-flush-draw-getting-a-good-price,raise,900,396,504,14.5
+small-pair-facing-a-large-turn-bet,fold,1300,0,1300,0.0
+small-pair-facing-a-large-turn-bet,call,1000,211,789,-188.0
+small-pair-facing-a-large-turn-bet,raise,500,119,381,-142.0
+overpair-on-a-dry-board,fold,800,0,800,-800.0
+overpair-on-a-dry-board,call,1100,704,396,77.0
+overpair-on-a-dry-board,raise,1700,1156,544,151.0
