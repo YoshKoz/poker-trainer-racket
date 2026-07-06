@@ -8,19 +8,14 @@ tables, overlay PokerStars, or automate play.
 ## Run
 
 ```bash
-cd /home/yoshkoz/poker-trainer-racket
-env TMPDIR=/tmp racket main.rkt
+racket main.rkt
 ```
 
 ## Test
 
 ```bash
-cd /home/yoshkoz/poker-trainer-racket
-env TMPDIR=/tmp raco test tests
+raco test tests
 ```
-
-`TMPDIR=/tmp` is used because this sandboxed environment exposes `/var/tmp` as
-read-only, and Racket writes temporary compiler files while running tests.
 
 ## What It Trains
 
@@ -55,7 +50,7 @@ session exports.
 Public PHH files can be placed in `data/phh/`, then aggregated with:
 
 ```bash
-env TMPDIR=/tmp racket import-phh.rkt data/phh data/generated/phh-action-outcomes.csv
+racket import-phh.rkt data/phh data/generated/phh-action-outcomes.csv
 ```
 
 The importer supports no-limit Texas Hold'em PHH files with `finishing_stacks`,
