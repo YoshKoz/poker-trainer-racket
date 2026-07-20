@@ -1,9 +1,18 @@
 # Racket Poker Trainer
 
-A small Linux GUI poker study app written in Racket.
+A GUI poker study app, written in Racket — deliberately, not by default. The
+`racket/gui` + `racket/class` combo gives a real desktop app (drills, an
+equity meter, click-to-answer tiles) without the ceremony of an Electron or
+web stack for something that only needs to run on one machine.
 
 This is a training and saved-hand analysis tool. It does not read live poker
 tables, overlay PokerStars, or automate play.
+
+## Tech stack
+
+- Racket (`racket/gui`, `racket/class`) for the GUI and drill engine
+- `rackunit` for tests
+- Plain CSV for aggregate outcome data — no database
 
 ## Run
 
@@ -16,6 +25,9 @@ racket main.rkt
 ```bash
 raco test tests
 ```
+
+Ten test modules under `tests/`, one per core unit (cards, evaluator, equity,
+advice, drills, stats, visuals, and the PHH/PokerStars importers).
 
 ## What It Trains
 
@@ -56,7 +68,8 @@ racket import-phh.rkt data/phh data/generated/phh-action-outcomes.csv
 The importer supports no-limit Texas Hold'em PHH files with `finishing_stacks`,
 so outcomes come from the actual final stack deltas. Preflop actions are grouped
 into buckets such as premium pairs, offsuit broadway, suited connectors, ace-x,
-and other hands.
+and other hands. A separate parser (`poker_trainer/pokerstars_import.rkt`)
+handles PokerStars-format hand histories the same way.
 
 Postflop actions get richer keys:
 
@@ -87,16 +100,19 @@ Those keys include:
 ## Project Layout
 
 ```text
-main.rkt                  GUI entrypoint
-poker_trainer/cards.rkt   card model, parser, deck helpers
-poker_trainer/evaluator.rkt
-poker_trainer/equity.rkt
-poker_trainer/advice.rkt
-poker_trainer/drills.rkt
-poker_trainer/visuals.rkt color and display-state helpers
-poker_trainer/stats.rkt   aggregate action-outcome decisions
-poker_trainer/phh_import.rkt PHH hand-history importer
-data/action-outcomes.csv  seed aggregate action data
-data/generated/phh-action-outcomes.csv generated aggregate PHH import
-tests/                    rackunit tests
+main.rkt                            GUI entrypoint
+poker_trainer/cards.rkt             card model, parser, deck helpers
+poker_trainer/evaluator.rkt         hand evaluation
+poker_trainer/equity.rkt            equity estimates
+poker_trainer/advice.rkt            hand-written training rules (fallback)
+poker_trainer/drills.rkt            drill selection and flow
+poker_trainer/ranges.rkt            starting-hand range buckets
+poker_trainer/visuals.rkt           color and display-state helpers
+poker_trainer/stats.rkt             aggregate action-outcome decisions
+poker_trainer/phh_import.rkt        PHH hand-history importer
+poker_trainer/pokerstars_import.rkt PokerStars hand-history importer
+data/action-outcomes.csv            seed aggregate action data
+data/phh/                           sample public PHH hand histories
+data/generated/                     generated aggregate imports
+tests/                              rackunit tests, one module per unit above
 ```
